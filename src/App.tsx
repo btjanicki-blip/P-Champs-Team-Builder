@@ -7,7 +7,7 @@ import NotFound from "src/pages/NotFound";
 
 export default function App() {
   return (
-    <Router basename="/react-skeleton">
+    <Router basename={import.meta.env.BASE_URL}>
       <Nav />
       <Routes fallback={<NotFound />}>
         <Route path="/" element={<Home />} />

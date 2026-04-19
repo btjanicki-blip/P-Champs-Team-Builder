@@ -1,4 +1,4 @@
-import { Link, ui } from "@adamjanicki/ui";
+import { ui } from "@adamjanicki/ui";
 
 export default function Footer() {
   return (
@@ -12,10 +12,10 @@ export default function Footer() {
       }}
     >
       <ui.p vfx={{ fontWeight: 5 }}>
-        Est. 2023 Built from scratch by{" "}
-        <Link to="https://adamjanicki.xyz" newTab>
-          Adam
-        </Link>
+        Built for local Pokemon Champions team building with bundled data and
+        assets.
+        <ui.br />
+        Powered by React, Vite, and the existing template shell.
       </ui.p>
     </ui.footer>
   );

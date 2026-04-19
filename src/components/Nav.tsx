@@ -23,7 +23,7 @@ export default function Nav() {
           to="/"
           onClick={() => setOpen(false)}
         >
-          React Skeleton
+          P-Champs Builder
         </UnstyledLink>
         <Box className="mobile">
           <Hamburger open={open} onClick={() => setOpen((prev) => !prev)} />
@@ -35,7 +35,7 @@ export default function Nav() {
         style={open ? { display: "flex" } : undefined}
       >
         <Navlink to="/" onClick={() => setOpen(false)}>
-          Home
+          Team Builder
         </Navlink>
         <Navlink to="/about/" onClick={() => setOpen(false)}>
           About
