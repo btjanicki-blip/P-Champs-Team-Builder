@@ -130,6 +130,26 @@ export default function Home() {
     );
   }, [team]);
 
+  const pokemonOnTeamCount = useMemo(() => {
+    return team.filter((slot) => slot.pokemon).length;
+  }, [team]);
+
+  const averageTeamStatTotal = useMemo(() => {
+    if (pokemonOnTeamCount === 0) {
+      return 0;
+    }
+
+    const summedStats =
+      teamStats.hp +
+      teamStats.attack +
+      teamStats.defense +
+      teamStats.spAttack +
+      teamStats.spDefense +
+      teamStats.speed;
+
+    return Math.round(summedStats / pokemonOnTeamCount);
+  }, [pokemonOnTeamCount, teamStats]);
+
   const typeDistribution = useMemo(() => {
     const counts = new Map<string, number>();
 
@@ -347,6 +367,7 @@ export default function Home() {
               <StatChip label="SpA" value={teamStats.spAttack} />
               <StatChip label="SpD" value={teamStats.spDefense} />
               <StatChip label="Spe" value={teamStats.speed} />
+              <StatChip label="Avg Total" value={averageTeamStatTotal} />
             </div>
 
             <div className="type-distribution">
@@ -370,7 +391,7 @@ export default function Home() {
               <h2>Six team slots</h2>
             </div>
             <span className="count-pill">
-              {team.filter((slot) => slot.pokemon).length}/{TEAM_SIZE} filled
+              {pokemonOnTeamCount}/{TEAM_SIZE} filled
             </span>
           </div>
 
