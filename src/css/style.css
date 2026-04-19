@@ -27,6 +27,20 @@ p {
 
 .builder-hero {
   width: 100%;
+  position: relative;
+  min-height: 124px;
+  padding-top: 10px;
+  padding-left: 104px;
+}
+
+.builder-mascot {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 20px rgba(0, 133, 250, 0.2));
 }
 
 .builder-intro,
@@ -353,6 +367,11 @@ p {
 
 .selected-moves {
   margin-top: 14px;
+}
+
+.move-pill-button {
+  border: 0;
+  cursor: pointer;
 }
 
 .empty-slot {

@@ -187,15 +187,53 @@ export default function Home() {
     slotIndex: number,
     event: React.ChangeEvent<HTMLSelectElement>
   ) {
-    const selectedMoves = Array.from(event.target.selectedOptions)
-      .map((option) => option.value)
-      .slice(0, MAX_MOVES);
+    const nextMove = event.target.value;
+
+    if (!nextMove) {
+      return;
+    }
 
     setTeam((currentTeam) =>
+      currentTeam.map((slot, index) => {
+        if (index !== slotIndex) {
+          return slot;
+        }
+
+        if (slot.selectedMoves.includes(nextMove)) {
+          return slot;
+        }
+
+        if (slot.selectedMoves.length >= MAX_MOVES) {
+          setErrorMessage("Each Pokemon can only have up to four selected moves.");
+          return slot;
+        }
+
+        setErrorMessage("");
+        return {
+          ...slot,
+          selectedMoves: [...slot.selectedMoves, nextMove],
+        };
+      })
+    );
+
+    event.target.selectedIndex = -1;
+  }
+
+  function removeSelectedMove(slotIndex: number, moveToRemove: string) {
+    setTeam((currentTeam) =>
       currentTeam.map((slot, index) =>
-        index === slotIndex ? { ...slot, selectedMoves } : slot
+        index === slotIndex
+          ? {
+              ...slot,
+              selectedMoves: slot.selectedMoves.filter(
+                (move) => move !== moveToRemove
+              ),
+            }
+          : slot
       )
     );
+
+    setErrorMessage("");
   }
 
   return (
@@ -205,6 +243,13 @@ export default function Home() {
       className="team-builder-page"
     >
       <section className="builder-hero">
+        {getSpriteForPokemon("shiny_rotom") ? (
+          <img
+            className="builder-mascot"
+            src={getSpriteForPokemon("shiny_rotom")}
+            alt="Shiny Rotom"
+          />
+        ) : null}
         <p className="builder-intro">
           Build a team of 6 Pokemon from the current champions lineup, then pick
           up to four moves for each slot.
@@ -380,16 +425,18 @@ export default function Home() {
                       </dl>
 
                       <label className="move-label" htmlFor={`moves-${index}`}>
-                        Choose up to four moves
+                        Add up to four moves
                       </label>
                       <select
                         id={`moves-${index}`}
                         className="move-select"
-                        multiple
                         size={Math.min(8, Math.max(4, slot.pokemon.moves?.length ?? 4))}
-                        value={slot.selectedMoves}
+                        defaultValue=""
                         onChange={(event) => updateSelectedMoves(index, event)}
                       >
+                        <option value="" disabled>
+                          Select a move from the list
+                        </option>
                         {Array.from(new Set(slot.pokemon.moves ?? [])).map((move) => (
                           <option key={move} value={move}>
                             {move}
@@ -400,9 +447,14 @@ export default function Home() {
                       <div className="selected-moves">
                         {slot.selectedMoves.length ? (
                           slot.selectedMoves.map((move) => (
-                            <span key={move} className="move-pill">
+                            <button
+                              key={move}
+                              type="button"
+                              className="move-pill move-pill-button"
+                              onClick={() => removeSelectedMove(index, move)}
+                            >
                               {move}
-                            </span>
+                            </button>
                           ))
                         ) : (
                           <p className="empty-copy">
