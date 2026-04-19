@@ -206,9 +206,8 @@ export default function Home() {
     >
       <section className="builder-hero">
         <p className="builder-intro">
-          Build a six-Pokemon squad from the local champions data set, then pick
-          up to four moves for each slot. Everything runs client-side with the
-          bundled sprites and type icons.
+          Build a team of 6 Pokemon from the current champions lineup, then pick
+          up to four moves for each slot.
         </p>
         {errorMessage && <p className="builder-message">{errorMessage}</p>}
       </section>
@@ -258,7 +257,7 @@ export default function Home() {
               type="search"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Try fire, dragon, or garchomp"
+              placeholder="Try searching fire or rotom"
             />
 
             <div className="pokemon-search-list" role="list">
@@ -417,7 +416,7 @@ export default function Home() {
                       <p className="slot-index">Slot {index + 1}</p>
                       <h3>Open position</h3>
                       <p className="empty-copy">
-                        Select this slot, then choose a Pokemon from the library.
+                        Select the Choose Pokemon, then select a Pokemon from the library on the left.
                       </p>
                     </div>
                   )}
