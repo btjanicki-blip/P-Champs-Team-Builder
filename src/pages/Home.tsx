@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-
 import Page from "src/components/Page";
 
 type PokemonRecord = {
