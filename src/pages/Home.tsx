@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ChangeEvent } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import Page from "src/components/Page";
 
@@ -184,7 +184,10 @@ export default function Home() {
     setErrorMessage("");
   }
 
-  function updateSelectedMoves(slotIndex: number, event: ChangeEvent<HTMLSelectElement>) {
+  function updateSelectedMoves(
+    slotIndex: number,
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) {
     const selectedMoves = Array.from(event.target.selectedOptions)
       .map((option) => option.value)
       .slice(0, MAX_MOVES);
