@@ -322,21 +322,24 @@ p {
   margin: 18px 0;
 }
 
-.stats-grid dt,
-.stats-grid dd {
+.stat-pill {
   margin: 0;
   padding: 8px 10px;
   border-radius: 14px;
   background: rgba(237, 242, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
-.stats-grid dt {
+.stat-pill span {
   font-size: 0.8rem;
   text-transform: uppercase;
   color: #596579;
 }
 
-.stats-grid dd {
+.stat-pill strong {
   font-weight: 700;
 }
 

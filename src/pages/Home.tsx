@@ -495,10 +495,10 @@ function StatPair({
   value?: number | null;
 }) {
   return (
-    <>
-      <dt>{label}</dt>
-      <dd>{value ?? 0}</dd>
-    </>
+    <div className="stat-pill">
+      <span>{label}:</span>
+      <strong>{value ?? 0}</strong>
+    </div>
   );
 }
 
