@@ -12,10 +12,10 @@ export default function Footer() {
       }}
     >
       <ui.p vfx={{ fontWeight: 5 }}>
-        Built for local Pokemon Champions team building with bundled data and
-        assets.
+        Static Pokemon Champions team building site with bundled data and
+        assets. Featuring pokemon available in the first regulation of Pokemon Champions.
         <ui.br />
-        Powered by React, Vite, and the existing template shell.
+        Built by Brian, 2026
       </ui.p>
     </ui.footer>
   );
