@@ -10,7 +10,7 @@ export default defineConfig({
     svgr(),
     eslint({ lintOnStart: true, include: ["src/**/*.{ts,tsx}"] }),
   ],
-  base: "/react-skeleton/",
+  base: "/P-Champs-Team-Builder/",
   resolve: {
     alias: {
       src: path.resolve(__dirname, "src"),
