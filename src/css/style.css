@@ -2,7 +2,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   background:
-    radial-gradient(circle at top, rgba(255, 214, 10, 0.22), transparent 28%),
+    radial-gradient(circle at top, rgba(0, 181, 255, 0.30), transparent 28%),
     linear-gradient(180deg, #f8fbff 0%, #eef3f9 100%);
   color: #17202c;
 }
@@ -139,7 +139,7 @@ p {
 }
 
 .slot-button {
-  background: linear-gradient(135deg, #ffb703, #fb8500);
+  background: linear-gradient(135deg, #0392ff, #8a00fb);
   color: #111827;
   font-weight: 700;
 }
@@ -202,7 +202,7 @@ p {
 .pokemon-search-item.is-selected,
 .team-slot.is-active {
   border-color: #fb8500;
-  box-shadow: 0 16px 34px rgba(251, 133, 0, 0.14);
+  box-shadow: 0 16px 34px rgba(0, 133, 250, 0.14);
 }
 
 .search-item-title {
